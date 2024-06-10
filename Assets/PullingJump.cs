@@ -9,6 +9,7 @@ public class PullingJump : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        //Physics.gravity = new Vector3(0, -9.8f, 0);
     }
     private Vector3 clickPosition;
     [SerializeField]
