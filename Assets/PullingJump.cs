@@ -5,11 +5,12 @@ using UnityEngine;
 public class PullingJump : MonoBehaviour
 {
     private Rigidbody rb;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        //Physics.gravity = new Vector3(0, -9.8f, 0);
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     private Vector3 clickPosition;
     [SerializeField]
@@ -27,6 +28,7 @@ public class PullingJump : MonoBehaviour
             Vector3 dist = clickPosition - Input.mousePosition;
             if(dist.sqrMagnitude == 0) { return; }
             rb.velocity = dist.normalized * jumpPower;
+            audioSource.Play();
         }
     }
     private void OnCollisionEnter(Collision collision)
